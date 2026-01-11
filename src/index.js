@@ -18,8 +18,10 @@ app.listen(3000, async () => {
     tweet.comments.push(comment);
     await tweet.save();
 
-    const getTweet = await tweetRepo.getAll(2, 4);
+    const getTweet = await tweetRepo.getAll(0, 4);
     console.log(getTweet);
 });
 
 // Concept of virtuals : set() & get()
+// Concept of hooks : async & sync
+// Concept of Indexing in DBMS
