@@ -9,12 +9,17 @@ app.listen(3000, async () => {
     console.log(`Server started`);
     await connect();
     console.log('Mongo db connected');
+
     const tweetRepo = new TweetRepository();
+
     const tweet = await tweetRepo.create({content : 'Tweet with comment schema'});
-    console.log(tweet);
+
     const comment = await Comment.create({content : 'new comment'});
     tweet.comments.push(comment);
     await tweet.save();
-    console.log(tweet);
+
+    const getTweet = await tweetRepo.getAll(2, 4);
+    console.log(getTweet);
 });
 
+// Concept of virtuals : set() & get()

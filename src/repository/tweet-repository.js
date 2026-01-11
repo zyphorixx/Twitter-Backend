@@ -35,7 +35,7 @@ class TweetRepository {
         try {
             // populate : when we want comment's body and not object id...
             // we use path here, because we have an array of comments
-            const tweet = await Tweet.findById(id).populate({path : 'comments'}); 
+            const tweet = await Tweet.findById(id).populate({path : 'comments'}).lean(); 
             return tweet;
         } 
         catch (error) {
@@ -46,6 +46,16 @@ class TweetRepository {
         try {
             // {new : true} se latest data milta hai console me
             const tweet = await Tweet.findByIdAndUpdate(id, data, {new : true});
+            return tweet;
+        } 
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    async getAll(offset, limit){
+        try {
+            const tweet = await Tweet.find().skip(offset).limit(limit); // to apply pagenation and offset
             return tweet;
         } 
         catch (error) {
