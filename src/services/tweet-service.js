@@ -11,7 +11,7 @@ class TweetService {
 
         // 1. Extract hashtag names
         let tags = content.match(/#[a-zA-Z0-9_]+/g);
-        tags = tags ? tags.map(tag => tag.substring(1)) : [];
+        tags = tags ? tags.map(tag => tag.substring(1)).map(tag => tag.toLowerCase()) : [];
 
         // 2. Create Tweet WITHOUT hashtags
         const tweet = await this.tweetRepository.create(data);
