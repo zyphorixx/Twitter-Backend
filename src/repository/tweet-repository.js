@@ -42,16 +42,6 @@ class TweetRepository {
             console.log(error);
         }
     }
-    async update(id, data){
-        try {
-            // {new : true} se latest data milta hai console me
-            const tweet = await Tweet.findByIdAndUpdate(id, data, {new : true});
-            return tweet;
-        } 
-        catch (error) {
-            console.log(error);
-        }
-    }
 
     async getAll(offset, limit){
         try {
