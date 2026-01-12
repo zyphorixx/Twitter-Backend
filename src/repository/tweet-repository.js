@@ -35,7 +35,7 @@ class TweetRepository {
         try {
             // populate : when we want comment's body and not object id...
             // we use path here, because we have an array of comments
-            const tweet = await Tweet.findById(id).populate({path : 'comments'}).lean(); 
+            const tweet = await Tweet.findById(id).populate({path : 'comments'}); 
             return tweet;
         } 
         catch (error) {
@@ -52,6 +52,11 @@ class TweetRepository {
             console.log(error);
         }
     }
+
+    async update(id, data) {
+       return Tweet.findByIdAndUpdate(id, data, { new: true });
+    }
+
 }
 
 module.exports = TweetRepository;
