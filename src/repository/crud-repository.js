@@ -1,62 +1,26 @@
 class CrudRepository {
-
-    constructor(model){
+    constructor(model) {
         this.model = model;
     }
 
-    async create(data){
-        try {
-            const result = await this.model.create(data);
-            return result;
-        } 
-        catch (error) {
-            console.log('Soemthing went wrong in crud repo');
-            throw error;
-        }
+    async create(data) {
+        return this.model.create(data);
     }
 
-    async destroy(id){
-        try {
-            const response = await this.model.findByIdAndDelete(id);
-            return response;
-        } 
-        catch (error) {
-            console.log('Soemthing went wrong in crud repo');
-            throw error;
-        }
+    async destroy(id) {
+        return this.model.findByIdAndDelete(id);
     }
 
-    async get(id){
-        try {
-            const result = await this.model.findById(id);
-            return result;
-        } 
-        catch (error) {
-            console.log('Soemthing went wrong in crud repo');
-            throw error;
-        }
+    async get(id) {
+        return this.model.findById(id);
     }
 
-    async getAll(id){
-        try {
-            const result = await this.model.find({});
-            return result;
-        } 
-        catch (error) {
-            console.log('Soemthing went wrong in crud repo');
-            throw error;
-        }
+    async getAll() {
+        return this.model.find({});
     }
 
-    async update(id, data){
-        try {
-            const result = await this.model.findByIdAndUpdate(id, data, {new : true});
-            return result;
-        } 
-        catch (error) {
-            console.log('Soemthing went wrong in crud repo');
-            throw error;
-        }
+    async update(id, data) {
+        return this.model.findByIdAndUpdate(id, data, { new: true });
     }
 }
 
