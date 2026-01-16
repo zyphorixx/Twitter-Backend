@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const CrudRepository = require('../repository/crud-repository');
+const CrudRepository = require('./crud-repository');
 
 class UserRepository extends CrudRepository {
     constructor() {

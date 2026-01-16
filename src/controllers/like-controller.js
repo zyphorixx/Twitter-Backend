@@ -3,7 +3,8 @@ const likeService = new LikeService();
 
 const toggleLike = async (req, res) => {
     try {
-        const { modelId, modelType, userId } = req.body;
+        const { modelId, modelType } = req.query;   
+        const { userId } = req.body; 
 
         const result = await likeService.toggleLike(
             modelId,
@@ -17,6 +18,7 @@ const toggleLike = async (req, res) => {
             data: result
         });
     } catch (error) {
+        console.error('LIKE ERROR:', error); // 👈 MUST ADD
         return res.status(500).json({
             success: false,
             message: 'Something went wrong'
