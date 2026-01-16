@@ -17,6 +17,18 @@ class UserService {
         }
         return this.userRepository.create(data);
     }
+
+    async signup(data) {
+        const existingUser = await this.userRepository.getByEmail(data.email);
+
+        if (existingUser) {
+            const error = new Error('User already exists');
+            error.statusCode = 409;
+            throw error;
+        }
+
+        return this.userRepository.create(data);
+    }
 }
 
 module.exports = UserService;

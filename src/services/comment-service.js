@@ -24,7 +24,7 @@ class CommentService {
             commentable: modelId
         });
 
-        commentable.comments.push(comment._id); // ✅ push ID
+        commentable.comments.push(comment._id); 
         await commentable.save();
 
         return comment;
