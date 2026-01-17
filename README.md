@@ -51,7 +51,7 @@ Database     : MongoDB, Mongoose
 Testing      : Jest
 Auth         : JWT
 Architecture : MVC + Repository Pattern
-
+```
 ---
 
 ## Project Structure
