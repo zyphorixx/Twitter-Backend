@@ -13,7 +13,7 @@ class TweetRepository extends CrudRepository {
             return tweet;
         } 
         catch (error) {
-            console.log(error);
+            throw error;
         }
     }
 
@@ -23,7 +23,7 @@ class TweetRepository extends CrudRepository {
             return tweet;
         } 
         catch (error) {
-            console.log(error);
+            throw error;
         }
     }
 
@@ -35,7 +35,7 @@ class TweetRepository extends CrudRepository {
             return tweet;
         } 
         catch (error) {
-            console.log(error);
+            throw error;
         }
     }
 
@@ -45,7 +45,7 @@ class TweetRepository extends CrudRepository {
             return tweet;
         } 
         catch (error) {
-            console.log(error);
+            throw error;
         }
     }
 

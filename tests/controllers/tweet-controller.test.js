@@ -27,7 +27,7 @@ test('should return tweets', async () => {
   // Check: res.json correct payload ke saath call hua ya nahi
   expect(res.json).toHaveBeenCalledWith({
     success: true,
-    message: 'Successfully fetched a tweet from service',
+    message: 'Successfully fetched the tweet',
     data: response,
     err: {}
   });
