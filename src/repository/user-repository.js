@@ -9,6 +9,15 @@ class UserRepository extends CrudRepository {
     async getByEmail(email) {
         return this.model.findOne({ email });
     }
+
+    async findBy(data) {
+        try {
+            const response = await User.findOne(data);
+            return response;
+        } catch(error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = UserRepository;
