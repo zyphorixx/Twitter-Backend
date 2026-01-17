@@ -94,6 +94,7 @@ npm test
 Run coverage:
 
 ```code
-Run coverage:
+npm run test:coverage
 ```
+
 
