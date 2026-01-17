@@ -1,25 +1,99 @@
-# Requirements
+# Twitter Backend (Node.js)
 
-- User should be able to create a post
-    - [The post/tweet cannot be more than 250 chars]
-    - [The posts/tweets should support feature of image upload]
+A scalable backend system for a Twitter-like social media platform built using **Node.js**, **Express**, and **MongoDB**.  
+This project focuses on clean architecture, testability, and core social-media features.
 
-- Any post should be visible to all those users who follow the author
-- Anyone who follows you can comment on a post/tweet
-- Anyone who follows you can like on a post/tweet
-- We can comment on a comment too
-- We can like any comment also
-- Searching of users
-- Retweeting
+---
 
-- User Profile :
-    - Name
-    - Follower Count
-    - Bio
-    - Last 10 tweets from the user
+## Features
 
-- Pagination on tweets
-- User authentication
+### Posts / Tweets
+- Users can create posts (tweets)
+- Tweet length limited to **250 characters**
+- Supports **image uploads**
+- Tweets can contain **hashtags**
+- **Retweet** functionality supported
+- Tweets are visible to **followers of the author**
+- **Pagination** supported on tweets
 
-- Every post/tweet might be having hashtags
+---
+
+### Likes & Comments
+- Followers can **like** a tweet
+- Followers can **comment** on a tweet
+- Comments can have **nested comments**
+- Likes are supported on **comments** as well
+
+---
+
+### User Features
+- User authentication (signup & login)
+- User search functionality
+- User profile includes:
+  - Name
+  - Bio
+  - Follower count
+  - Last **10 tweets**
+
+---
+
+### Authentication
+- Secure user authentication
+- Protected routes for actions like posting, liking, commenting
+
+---
+
+## Tech Stack
+
+```text
+Backend      : Node.js, Express.js
+Database     : MongoDB, Mongoose
+Testing      : Jest
+Auth         : JWT
+Architecture : MVC + Repository Pattern
+
+---
+
+## Project Structure
+
+```code
+src/
+├── controllers/
+├── services/
+├── repository/
+├── models/
+├── routes/
+├── config/
+└── index.js
+
+tests/
+├── controllers/
+├── services/
+├── repository/
+└── mocker.js
+```
+
+---
+
+## Testing
+
+- Unit tests written using Jest
+- Tests cover:
+    - Controllers
+    - Services
+    - Repositories
+- Database calls are mocked
+- Coverage reports are generated but ignored from Git
+
+Run tests:
+
+```code
+npm test
+```
+
+Run coverage:
+
+```code
+Run coverage:
+```
 
