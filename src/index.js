@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: require('path').resolve(__dirname, '../.env'),
+});
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');

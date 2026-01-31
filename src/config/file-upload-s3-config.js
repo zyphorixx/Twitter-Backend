@@ -1,30 +1,29 @@
-import multer from 'multer';
-import multerS3 from 'multer-s3';
-import aws from 'aws-sdk';
-import dotenv from 'dotenv';
+const multer = require('multer');
+const multerS3 = require('multer-s3');
+const AWS = require('aws-sdk');
+require('dotenv').config();
 
-dotenv.config();
-
-aws.config.update({
-    region: process.env.AWS_REGION,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    accessKeyId: process.env.ACCESS_KEY_ID
+// Configure AWS
+AWS.config.update({
+  region: process.env.AWS_REGION,
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
 
-const s3 = new aws.S3();
+const s3 = new AWS.S3();
 
 const upload = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: process.env.BUCKET_NAME,
-        acl: 'public-read',
-        metadata: function (req, file, cb) {
-            cb(null, {fieldName: file.fieldname});
-        },
-        key: function (req, file, cb) {
-            cb(null, Date.now().toString())
-        }
-    })
+  storage: multerS3({
+    s3: s3,
+    bucket: process.env.BUCKET_NAME,
+    acl: 'public-read',
+    metadata: (req, file, cb) => {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: (req, file, cb) => {
+      cb(null, `${Date.now()}-${file.originalname}`);
+    },
+  }),
 });
 
-export default upload;
+module.exports = upload;

@@ -7,6 +7,7 @@ class TweetService {
     }
 
     async create(data) {
+        console.log(data);
         const content = data.content;
 
         // 1. Extract hashtag names
